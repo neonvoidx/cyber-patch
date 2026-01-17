@@ -3,11 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://drpai2qjwlvo2" path="res://scenes/ui/global_timer.tscn" id="1_u7n8c"]
 
 [node name="Ui" type="CanvasLayer"]
+follow_viewport_enabled = true
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-
-[node name="GlobalTimer" parent="CenterContainer" instance=ExtResource("1_u7n8c")]
-layout_mode = 2
+[node name="GlobalTimer" parent="." instance=ExtResource("1_u7n8c")]

@@ -1,22 +1,29 @@
 [gd_scene load_steps=6 format=3 uid="uid://dwoe7pi0k8mom"]
 
-[ext_resource type="PackedScene" uid="uid://buhr1k8tqsglo" path="res://scenes/player/player_city.tscn" id="1_welcl"]
+[ext_resource type="PackedScene" uid="uid://buhr1k8tqsglo" path="res://scenes/player/player_platforming.tscn" id="1_welcl"]
 [ext_resource type="PackedScene" uid="uid://4dausjs2sp6r" path="res://scenes/objects/platform.tscn" id="2_ukbxt"]
 [ext_resource type="PackedScene" uid="uid://cfwnmbe7ktjbd" path="res://scenes/ui/ui.tscn" id="3_4hfmj"]
 
 [sub_resource type="Gradient" id="Gradient_ukbxt"]
-colors = PackedColorArray(0.07787991, 0.3156196, 0.9999952, 1, 0.5647059, 1, 1, 1)
+colors = PackedColorArray(0.12941177, 0.13725491, 0.21568628, 1, 0.19607843, 0.20392157, 0.28627452, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4hfmj"]
 gradient = SubResource("Gradient_ukbxt")
 
 [node name="City" type="Node2D"]
 
-[node name="BG" type="TextureRect" parent="."]
-offset_left = -2450.0
-offset_top = -736.0
-offset_right = -2386.0
-offset_bottom = -672.0
+[node name="Ui" parent="." instance=ExtResource("3_4hfmj")]
+follow_viewport_enabled = false
+
+[node name="BgLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="BG" type="TextureRect" parent="BgLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(76.4, 14.908708)
 texture = SubResource("GradientTexture2D_4hfmj")
 
@@ -27,20 +34,47 @@ position = Vector2(-2116, 142)
 position = Vector2(-1.9999695, 332)
 scale = Vector2(244.60869, 11.390211)
 
-[node name="Platform2" parent="." instance=ExtResource("2_ukbxt")]
+[node name="Platforms" type="Node" parent="."]
+
+[node name="Platform2" parent="Platforms" instance=ExtResource("2_ukbxt")]
 position = Vector2(-268, -86.00001)
-scale = Vector2(12.123004, 2.190425)
+scale = Vector2(12.123004, 1.7504252)
 
-[node name="Platform3" parent="." instance=ExtResource("2_ukbxt")]
+[node name="Platform3" parent="Platforms" instance=ExtResource("2_ukbxt")]
 position = Vector2(254, -232)
-scale = Vector2(6.315794, 1.8319926)
+scale = Vector2(6.315794, 1.4319927)
 
-[node name="Platform4" parent="." instance=ExtResource("2_ukbxt")]
+[node name="Platform4" parent="Platforms" instance=ExtResource("2_ukbxt")]
 position = Vector2(-773.00006, 74)
-scale = Vector2(17.915794, 1.8319926)
+scale = Vector2(17.435797, 1.5119923)
 
-[node name="Platform5" parent="." instance=ExtResource("2_ukbxt")]
+[node name="Platform7" parent="Platforms" instance=ExtResource("2_ukbxt")]
+position = Vector2(1080, -501)
+rotation = 1.5652565
+scale = Vector2(17.435799, 1.5119923)
+
+[node name="Platform8" parent="Platforms" instance=ExtResource("2_ukbxt")]
+position = Vector2(1781.0001, -627.9999)
+rotation = 0.39837408
+scale = Vector2(10.57181, 0.8950996)
+
+[node name="EndPlatformTest" parent="Platforms" groups=["ExitNode"] instance=ExtResource("2_ukbxt")]
+position = Vector2(2421, -637.00006)
+rotation = 3.1396232
+scale = Vector2(16.8411, 2.8361638)
+
+[node name="Platform5" parent="Platforms" instance=ExtResource("2_ukbxt")]
 position = Vector2(581, -393)
-scale = Vector2(3.435793, 1.8319926)
+scale = Vector2(3.435793, 1.0319927)
 
-[node name="Ui" parent="." instance=ExtResource("3_4hfmj")]
+[node name="Platform6" parent="Platforms" instance=ExtResource("2_ukbxt")]
+position = Vector2(838, -550)
+scale = Vector2(3.0757928, 1.1119914)
+
+[node name="Label" type="Label" parent="Platforms"]
+offset_left = 2388.0
+offset_top = -662.0
+offset_right = 2442.0
+offset_bottom = -626.0
+theme_override_font_sizes/font_size = 26
+text = "END"

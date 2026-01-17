@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bvp4m58kcm22e" path="res://scripts/ui/main_menu.gd" id="1_1g8jr"]
 [ext_resource type="FontFile" uid="uid://db0hbxgtfo0g0" path="res://assets/fonts/hypik.otf" id="1_fe2o3"]
-[ext_resource type="FontFile" uid="uid://c41x0qsxwv68i" path="res://assets/fonts/Pixeled.ttf" id="2_1g8jr"]
+[ext_resource type="FontFile" uid="uid://b0cnq3g1ieha2" path="res://assets/fonts/Nasalization Rg.otf" id="3_1g8jr"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_1g8jr")
@@ -37,8 +37,8 @@ custom_minimum_size = Vector2(0, 140)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/default_color = Color(0.015686275, 0.81960785, 0.9764706, 1)
-theme_override_fonts/normal_font = ExtResource("2_1g8jr")
-theme_override_font_sizes/normal_font_size = 21
+theme_override_fonts/normal_font = ExtResource("3_1g8jr")
+theme_override_font_sizes/normal_font_size = 26
 bbcode_enabled = true
 text = "[pulse freq=1.0 ease=-2.0]Press jump key (space)  to start[/pulse]
 

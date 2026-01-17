@@ -8,7 +8,7 @@ func _ready() -> void:
 		title.add_theme_color_override("font_color", Colors.red)
 	else:
 		title.text="CyberPatch"
-		title.add_theme_color_override("font_color", Colors.green)
+		title.add_theme_color_override("font_color", Colors.cyan)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

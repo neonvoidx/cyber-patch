@@ -7,7 +7,8 @@
 radius = 66.0
 height = 132.0
 
-[node name="PlayerCity" type="CharacterBody2D"]
+[node name="PlayerPlatforming" type="CharacterBody2D"]
+floor_stop_on_slope = false
 script = ExtResource("2_vod8q")
 
 [node name="Camera2D" type="Camera2D" parent="."]

@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://c41x0qsxwv68i"
-path="res://.godot/imported/Pixeled.ttf-e8bbf35245fcf80d16d4c25fafd33f1f.fontdata"
+uid="uid://b0cnq3g1ieha2"
+path="res://.godot/imported/Nasalization Rg.otf-8d7c1bbdf0b70efbde90080f8e2e6252.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/Pixeled.ttf"
-dest_files=["res://.godot/imported/Pixeled.ttf-e8bbf35245fcf80d16d4c25fafd33f1f.fontdata"]
+source_file="res://assets/fonts/Nasalization Rg.otf"
+dest_files=["res://.godot/imported/Nasalization Rg.otf-8d7c1bbdf0b70efbde90080f8e2e6252.fontdata"]
 
 [params]
 

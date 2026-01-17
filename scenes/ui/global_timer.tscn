@@ -1,22 +1,52 @@
-[gd_scene load_steps=2 format=3 uid="uid://drpai2qjwlvo2"]
+[gd_scene load_steps=5 format=3 uid="uid://drpai2qjwlvo2"]
 
 [ext_resource type="Script" uid="uid://blers40bp58" path="res://scripts/ui/global_timer.gd" id="1_n80xn"]
+[ext_resource type="FontFile" uid="uid://b0cnq3g1ieha2" path="res://assets/fonts/Nasalization Rg.otf" id="2_jlq0u"]
 
-[node name="GlobalTimer" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n80xn"]
+bg_color = Color(0.16470589, 0.18039216, 0.4745098, 1)
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jlq0u"]
+bg_color = Color(1, 0, 0.30588236, 1)
+border_color = Color(0, 0, 0, 1)
+
+[node name="GlobalTimer" type="Node"]
 script = ExtResource("1_n80xn")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
 one_shot = true
 
-[node name="TimeDisplay" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 30
-text = "00:00:00"
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.05
+anchor_right = 0.95
+offset_top = 5.0
+offset_bottom = 20.0
+grow_horizontal = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_n80xn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jlq0u")
+allow_greater = true
+show_percentage = false
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 20.0
+offset_bottom = 44.0
+grow_horizontal = 2
+
+[node name="TimeDisplay" type="Label" parent="CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0.30588236, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_jlq0u")
+theme_override_font_sizes/font_size = 36
+text = "00:0"
