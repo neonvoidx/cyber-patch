@@ -1,3 +1,27 @@
-[gd_scene format=3 uid="uid://dwoe7pi0k8mom"]
+[gd_scene load_steps=5 format=3 uid="uid://dwoe7pi0k8mom"]
+
+[ext_resource type="PackedScene" uid="uid://buhr1k8tqsglo" path="res://scenes/player/player_city.tscn" id="1_welcl"]
+[ext_resource type="Texture2D" uid="uid://bkrgcvka86krn" path="res://assets/icon.svg" id="2_ukbxt"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ukbxt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4hfmj"]
+size = Vector2(1740.5, 116)
 
 [node name="City" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_welcl")]
+
+[node name="TestGround" type="StaticBody2D" parent="."]
+position = Vector2(-6, 86)
+physics_material_override = SubResource("PhysicsMaterial_ukbxt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestGround"]
+position = Vector2(71.75, 63)
+shape = SubResource("RectangleShape2D_4hfmj")
+
+[node name="TextureRect" type="TextureRect" parent="TestGround"]
+offset_left = -815.0
+offset_right = 940.0
+offset_bottom = 128.0
+texture = ExtResource("2_ukbxt")
