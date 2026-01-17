@@ -4,24 +4,29 @@
 [ext_resource type="Script" uid="uid://c8x7x7jrqapy2" path="res://scripts/player/player_movement_city.gd" id="2_vod8q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dovo2"]
-radius = 54.0
-height = 170.0
+radius = 66.0
+height = 132.0
 
-[node name="Player" type="Node"]
+[node name="PlayerCity" type="CharacterBody2D"]
+script = ExtResource("2_vod8q")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(26, 41)
-zoom = Vector2(0.7, 0.7)
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_dovo2")
+
+[node name="replacemewithsprite" type="TextureRect" parent="."]
 offset_left = -66.0
 offset_top = -62.0
 offset_right = 62.0
 offset_bottom = 66.0
 texture = ExtResource("1_8afob")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-script = ExtResource("2_vod8q")
+[node name="JumpBufferTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("CapsuleShape2D_dovo2")
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
