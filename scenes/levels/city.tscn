@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwoe7pi0k8mom"]
+[gd_scene load_steps=7 format=3 uid="uid://dwoe7pi0k8mom"]
 
 [ext_resource type="PackedScene" uid="uid://buhr1k8tqsglo" path="res://scenes/player/player_platforming.tscn" id="1_welcl"]
 [ext_resource type="PackedScene" uid="uid://4dausjs2sp6r" path="res://scenes/objects/platform.tscn" id="2_ukbxt"]
 [ext_resource type="PackedScene" uid="uid://cfwnmbe7ktjbd" path="res://scenes/ui/ui.tscn" id="3_4hfmj"]
+[ext_resource type="PackedScene" uid="uid://bsyq6b1a2wp0a" path="res://scenes/objects/exit_node.tscn" id="4_nj888"]
 
 [sub_resource type="Gradient" id="Gradient_ukbxt"]
 colors = PackedColorArray(0.12941177, 0.13725491, 0.21568628, 1, 0.19607843, 0.20392157, 0.28627452, 1)
@@ -71,10 +72,8 @@ scale = Vector2(3.435793, 1.0319927)
 position = Vector2(838, -550)
 scale = Vector2(3.0757928, 1.1119914)
 
-[node name="Label" type="Label" parent="Platforms"]
-offset_left = 2388.0
-offset_top = -662.0
-offset_right = 2442.0
-offset_bottom = -626.0
-theme_override_font_sizes/font_size = 26
-text = "END"
+[node name="Area2D" parent="Platforms" instance=ExtResource("4_nj888")]
+position = Vector2(2425, -741)
+scale = Vector2(4.2, 5.680002)
+
+[connection signal="body_entered" from="Platforms/Area2D" to="Player" method="_on_area_2d_body_entered"]

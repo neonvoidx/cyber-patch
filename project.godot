@@ -24,7 +24,8 @@ Colors="*res://scripts/autoload/colors.gd"
 
 [display]
 
-window/size/mode=2
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 
 [global_group]
 

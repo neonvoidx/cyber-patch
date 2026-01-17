@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfwnmbe7ktjbd"]
+[gd_scene load_steps=4 format=3 uid="uid://cfwnmbe7ktjbd"]
 
+[ext_resource type="Script" uid="uid://dgsurwju4xsk3" path="res://scenes/ui/pause_menu.gd" id="1_f5cxw"]
 [ext_resource type="PackedScene" uid="uid://drpai2qjwlvo2" path="res://scenes/ui/global_timer.tscn" id="1_u7n8c"]
+[ext_resource type="PackedScene" uid="uid://bjpwt0st8u6rh" path="res://scenes/ui/pause_menu.tscn" id="3_aac20"]
 
 [node name="Ui" type="CanvasLayer"]
 follow_viewport_enabled = true
+script = ExtResource("1_f5cxw")
 
 [node name="GlobalTimer" parent="." instance=ExtResource("1_u7n8c")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_aac20")]

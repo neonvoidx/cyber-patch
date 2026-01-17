@@ -23,8 +23,7 @@ func _physics_process(delta: float) -> void:
 func handle_input() -> void:
 	if Input.is_action_just_pressed("jump"):
 		jump_buffer_timer.start()
-
-		
+	
 	var direction = Input.get_axis("left", "right")
 	if direction == 0:
 		velocity.x = move_toward(velocity.x, 0, acceleration)
@@ -71,3 +70,7 @@ func update_state():
 		#State.WALK: animations.play("walk")
 		#State.JUMP: animations.play("jump_up")
 		#State.DOWN: animations.play("jump_down")
+
+
+func _on_area_2d_body_entered(_body: Node2D) -> void:
+	GameState.complete_level()

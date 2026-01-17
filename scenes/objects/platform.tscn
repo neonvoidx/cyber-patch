@@ -1,25 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://4dausjs2sp6r"]
+[gd_scene load_steps=2 format=3 uid="uid://4dausjs2sp6r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dotdq"]
+size = Vector2(20, 22)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gcgad"]
-size = Vector2(7.7514305, 34.92645)
-
-[node name="Platform" type="StaticBody2D"]
+[node name="StaticBody2D" type="StaticBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_dotdq")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="Area2D"]
+[node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -10.0
 offset_top = -10.0
 offset_right = 10.0
 offset_bottom = 12.0
 color = Color(0, 0.32156864, 0.3764706, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(9.536743e-07, -6)
-scale = Vector2(2.5801687, 1.0307374)
-shape = SubResource("RectangleShape2D_gcgad")
