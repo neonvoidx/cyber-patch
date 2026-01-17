@@ -14,6 +14,8 @@ enum State{IDLE, WALK, JUMP, DOWN}
 var current_state: State = State.IDLE
 
 func _physics_process(delta: float) -> void:
+	if GameState.is_game_over:
+		return
 	handle_input()
 	update_movement(delta)
 	update_state()

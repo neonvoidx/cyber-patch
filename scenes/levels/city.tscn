@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwoe7pi0k8mom"]
+[gd_scene load_steps=6 format=3 uid="uid://dwoe7pi0k8mom"]
 
 [ext_resource type="PackedScene" uid="uid://buhr1k8tqsglo" path="res://scenes/player/player_city.tscn" id="1_welcl"]
 [ext_resource type="PackedScene" uid="uid://4dausjs2sp6r" path="res://scenes/objects/platform.tscn" id="2_ukbxt"]
+[ext_resource type="PackedScene" uid="uid://cfwnmbe7ktjbd" path="res://scenes/ui/ui.tscn" id="3_4hfmj"]
 
 [sub_resource type="Gradient" id="Gradient_ukbxt"]
 colors = PackedColorArray(0.07787991, 0.3156196, 0.9999952, 1, 0.5647059, 1, 1, 1)
@@ -12,10 +13,10 @@ gradient = SubResource("Gradient_ukbxt")
 [node name="City" type="Node2D"]
 
 [node name="BG" type="TextureRect" parent="."]
-offset_left = -2444.0
-offset_top = -723.0
-offset_right = -2380.0
-offset_bottom = -659.0
+offset_left = -2450.0
+offset_top = -736.0
+offset_right = -2386.0
+offset_bottom = -672.0
 scale = Vector2(76.4, 14.908708)
 texture = SubResource("GradientTexture2D_4hfmj")
 
@@ -41,3 +42,5 @@ scale = Vector2(17.915794, 1.8319926)
 [node name="Platform5" parent="." instance=ExtResource("2_ukbxt")]
 position = Vector2(581, -393)
 scale = Vector2(3.435793, 1.8319926)
+
+[node name="Ui" parent="." instance=ExtResource("3_4hfmj")]
