@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bear5257piwox"]
+
+[ext_resource type="Script" uid="uid://ss5dkngmfb5i" path="res://scripts/player/player_movement_underground.gd" id="1_52twi"]
+[ext_resource type="Texture2D" uid="uid://bkrgcvka86krn" path="res://assets/icon.svg" id="2_2syl3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dovo2"]
+radius = 66.0
+height = 132.0
+
+[node name="PlayerUndergound" type="CharacterBody2D"]
+floor_stop_on_slope = false
+script = ExtResource("1_52twi")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(26, 41)
+zoom = Vector2(0.7, 0.7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_dovo2")
+
+[node name="replacemewithsprite" type="TextureRect" parent="."]
+offset_left = -66.0
+offset_top = -62.0
+offset_right = 62.0
+offset_bottom = 66.0
+texture = ExtResource("2_2syl3")
