@@ -74,3 +74,9 @@ func update_state():
 
 func _on_area_2d_body_entered(_body: Node2D) -> void:
 	GameState.complete_level()
+
+
+func _on_enter_undergound_body_entered(_body: Node2D) -> void:
+	var timer = get_node_or_null("/root/City/Ui/GlobalTimer/Timer")
+	var time_left = timer.time_left if timer else GameState.initial_time
+	GameState.enter_undergound(global_position, time_left)

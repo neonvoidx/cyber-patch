@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://csech3sd4urms"]
+[gd_scene load_steps=5 format=3 uid="uid://csech3sd4urms"]
 
 [ext_resource type="PackedScene" uid="uid://bear5257piwox" path="res://scenes/player/player_underground.tscn" id="1_g2nqr"]
 
@@ -7,6 +7,9 @@ colors = PackedColorArray(0.12941177, 0.13725491, 0.21568628, 1, 0.19607843, 0.2
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_g2nqr"]
 gradient = SubResource("Gradient_ukbxt")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2nqr"]
+size = Vector2(16.136154, 27)
 
 [node name="Underground" type="Node2D"]
 
@@ -21,15 +24,34 @@ layer = -1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 1.0
+offset_right = 6.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(76.4, 14.908708)
 texture = SubResource("GradientTexture2D_g2nqr")
 
-[node name="Node" type="Node" parent="."]
+[node name="Node" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 377.0
+offset_top = 249.0
+offset_right = 377.0
+offset_bottom = 249.0
 
-[node name="ColorRect" type="ColorRect" parent="Node"]
-offset_left = 370.0
-offset_top = 177.0
-offset_right = 410.0
-offset_bottom = 217.0
+[node name="Area2D" type="Area2D" parent="Node"]
+
+[node name="ColorRect" type="ColorRect" parent="Node/Area2D"]
+offset_left = -19.0
+offset_top = -18.0
+offset_right = 21.0
+offset_bottom = 22.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Area2D"]
+position = Vector2(1.5, 2)
+scale = Vector2(2.5408762, 1.4502519)
+shape = SubResource("RectangleShape2D_g2nqr")
+
+[connection signal="body_entered" from="Node/Area2D" to="PlayerUndergound" method="_on_area_2d_body_entered"]

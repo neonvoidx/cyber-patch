@@ -67,3 +67,7 @@ func update_state():
 		#State.DOWN: animations.play("walk_down")
 		#State.LEFT: animations.play("walk_left")
 		#State.RIGHT: animations.play("walk_right")
+
+
+func _on_area_2d_body_entered(_body: Node2D) -> void:
+	GameState.leave_underground()
