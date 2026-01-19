@@ -37,7 +37,7 @@ func enter_undergound(player_position: Vector2 = Vector2.ZERO, time_left: float 
 	is_underground=true
 	saved_city_position = player_position
 	saved_city_time = time_left
-	get_tree().change_scene_to_file("res://scenes/levels/underground.tscn")
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/levels/underground.tscn")
 
 func leave_underground():
 	is_underground=false
@@ -48,6 +48,7 @@ func leave_underground():
 	# Flag to show bonus when scene loads
 	show_time_bonus = true
 	time_bonus_amount = bonus
+	time_bonus_added.emit(bonus)
 	get_tree().change_scene_to_file("res://scenes/levels/city.tscn")
 	
 func pause() -> void:
@@ -63,6 +64,18 @@ func show_puzzle():
 
 func hide_puzzle():
 	is_puzzle_showing = false
+	
+func reset_level():
+	is_puzzle_complete = false
+	is_puzzle_showing = false
+	is_player_movable = true
+	is_game_over = false
+	is_underground =false
+	# TODO this should be based on current level
+	# but we only have one right now anyways
+	get_tree().change_scene_to_file("res://scenes/levels/city.tscn")
+		
+	
 # Signals emitted
 signal game_over
 signal time_bonus_added(seconds: float)

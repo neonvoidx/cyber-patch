@@ -2,22 +2,27 @@ extends CharacterBody2D
 
 @onready var jump_buffer_timer: Timer = $JumpBufferTimer
 @onready var coyote_timer: Timer = $CoyoteTimer
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-var speed = 500.0
-var jump_speed = -80.0 * 7.5
+var speed = 300.0
+var jump_speed = -80.0 * 6.5
 var acceleration = 20.0
 var gravity = 160.0 * 6.0
 var down_gravity_factor = 1.5
 var sprint_multiplier = 1.2
 
-enum State{IDLE, WALK, JUMP, DOWN}
+enum State{IDLE, RUN, JUMP, DOWN}
 var current_state: State = State.IDLE
+var facing_left: bool = false
 
+func _ready():
+	animated_sprite.play("idle_right")
+	
 func _physics_process(delta: float) -> void:
 	handle_input()
 	update_movement(delta)
 	update_state()
-	#update_animations()
+	update_animation()
 	move_and_slide()
 	
 func handle_input() -> void:
@@ -29,6 +34,10 @@ func handle_input() -> void:
 		velocity.x = move_toward(velocity.x, 0, acceleration)
 	else:
 		velocity.x = move_toward(velocity.x, speed * direction, acceleration)
+		if direction < 0:
+			facing_left = true
+		elif direction > 0:
+			facing_left = false
 		#if Input.is_action_pressed("sprint"):
 			#velocity.x *= sprint_multiplier
 	
@@ -47,8 +56,8 @@ func update_movement(delta: float) -> void:
 func update_state():
 	match current_state:
 		State.IDLE when velocity.x != 0:
-			current_state = State.WALK
-		State.WALK:
+			current_state = State.RUN
+		State.RUN:
 			if velocity.x == 0:
 				current_state = State.IDLE
 			if not is_on_floor() && velocity.y > 0:
@@ -60,16 +69,16 @@ func update_state():
 			if velocity.x == 0:
 				current_state = State.IDLE
 			else:
-				current_state = State.WALK
+				current_state = State.RUN
 				
-#func update_animation() -> void:
-	#if velocity.x != 0:
-		#animations.scale.x = sign(velocity.x)
-	#match current_state:
-		#State.IDLE: animations.play("idle")
-		#State.WALK: animations.play("walk")
-		#State.JUMP: animations.play("jump_up")
-		#State.DOWN: animations.play("jump_down")
+func update_animation() -> void:
+	var direction_suffix = "_left" if facing_left else "_right"
+	
+	match current_state:
+		State.IDLE: animated_sprite.play("idle" + direction_suffix)
+		State.RUN: animated_sprite.play("run" + direction_suffix)
+		State.JUMP: animated_sprite.play("jump" + direction_suffix)
+		State.DOWN: animated_sprite.play("jump" + direction_suffix)
 
 
 func _on_area_2d_body_entered(_body: Node2D) -> void:
