@@ -1,71 +1,45 @@
 extends CanvasLayer
 
-@onready var label1: Label = $QuickInput/CenterContainer/HBoxContainer/PanelContainer/Label
-@onready var label2: Label = $QuickInput/CenterContainer/HBoxContainer/PanelContainer2/Label2
-@onready var label3: Label = $QuickInput/CenterContainer/HBoxContainer/PanelContainer3/Label3
-@onready var label4: Label = $QuickInput/CenterContainer/HBoxContainer/PanelContainer4/Label4
+@onready var labels: Array[Label] = [
+	$QuickInput/CenterContainer/HBoxContainer/PanelContainer/Label,
+	$QuickInput/CenterContainer/HBoxContainer/PanelContainer2/Label2,
+	$QuickInput/CenterContainer/HBoxContainer/PanelContainer3/Label3,
+	$QuickInput/CenterContainer/HBoxContainer/PanelContainer4/Label4
+]
 
-# TODO better inputs than hardcoded shit
-var inputs = ["W", "A", "S", "D"]
-var solved = 0
-var random_inputs = []
-var next_input
+const INPUTS = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+const SEQUENCE_LENGTH = 4
+const INPUT_DELAY = 0.5
+
+var random_inputs: Array[String] = []
+var current_index = 0
 var puzzle_active = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# generate random WASD input for 4 items
-	random_inputs = [inputs.pick_random(), inputs.pick_random(), inputs.pick_random(), inputs.pick_random()]
-	next_input = random_inputs[0]
-	# ya this is shit, handwaved
-	# set each label to match the random sequence
-	label1.text = random_inputs[0]
-	label2.text = random_inputs[1]
-	label3.text = random_inputs[2]
-	label4.text = random_inputs[3]
-	# Delay activation to avoid registering the interact key press
-	await get_tree().create_timer(0.1).timeout
+	random_inputs.resize(SEQUENCE_LENGTH)
+	for i in SEQUENCE_LENGTH:
+		random_inputs[i] = INPUTS.pick_random()
+		labels[i].text = random_inputs[i]
+	
+	await get_tree().create_timer(INPUT_DELAY).timeout
 	puzzle_active = true
 		
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	if not puzzle_active:
+func _input(event: InputEvent) -> void:
+	if not puzzle_active or current_index >= SEQUENCE_LENGTH:
 		return
-	if solved < 4:
-		match next_input:
-			"W":
-				if Input.is_action_just_pressed("up"):
-					solved += 1
-					if solved < 4:
-						next_input = random_inputs[solved]
-			"S":
-				if Input.is_action_just_pressed("down"):
-					solved += 1
-					if solved < 4:
-						next_input = random_inputs[solved]
-			"A":
-				if Input.is_action_just_pressed("left"):
-					solved += 1
-					if solved < 4:
-						next_input = random_inputs[solved]		
-			"D":
-				if Input.is_action_just_pressed("right"):
-					solved += 1
-					if solved < 4:
-						next_input = random_inputs[solved]
-	elif solved == 4:
-		set_done(label4)
-		GameState.hide_puzzle()
-		GameState.leave_underground()
-		solved = 0
-	match solved:
-		1:
-			set_done(label1)
-		2:
-			set_done(label2)
-		3: 
-			set_done(label3)
+	
+	if event is InputEventKey and event.pressed and not event.echo:
+		var key_text = OS.get_keycode_string(event.keycode)
+		
+		if key_text == random_inputs[current_index]:
+			set_done(labels[current_index])
+			current_index += 1
+			
+			if current_index >= SEQUENCE_LENGTH:
+				puzzle_active = false
+				GameState.hide_puzzle()
+				GameState.leave_underground()
 
 func set_done(label: Label):
 	label.add_theme_color_override("font_color", Colors.bright_green)
