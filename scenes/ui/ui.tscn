@@ -1,11 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfwnmbe7ktjbd"]
+[gd_scene load_steps=7 format=3 uid="uid://cfwnmbe7ktjbd"]
 
 [ext_resource type="PackedScene" uid="uid://drpai2qjwlvo2" path="res://scenes/ui/global_timer.tscn" id="1_u7n8c"]
+[ext_resource type="Script" uid="uid://bnm85cda0saax" path="res://scripts/ui/ui.gd" id="1_ui"]
 [ext_resource type="PackedScene" uid="uid://bjpwt0st8u6rh" path="res://scenes/ui/pause_menu.tscn" id="3_aac20"]
 [ext_resource type="Script" uid="uid://dxgkmrefygli4" path="res://scripts/ui/level.gd" id="3_g5kmx"]
+[ext_resource type="Script" uid="uid://cniritosowm7o" path="res://scripts/ui/time_bonus_indicator.gd" id="4_bonus"]
+[ext_resource type="FontFile" uid="uid://b0cnq3g1ieha2" path="res://assets/fonts/Nasalization Rg.otf" id="5_font"]
 
 [node name="Ui" type="CanvasLayer"]
 follow_viewport_enabled = true
+script = ExtResource("1_ui")
 
 [node name="GlobalTimer" parent="." instance=ExtResource("1_u7n8c")]
 
@@ -13,6 +17,30 @@ follow_viewport_enabled = true
 process_mode = 0
 
 [node name="Level" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 937.0
+offset_top = 68.0
+offset_right = 977.0
+offset_bottom = 91.0
 script = ExtResource("3_g5kmx")
+
+[node name="TimeBonusIndicator" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -438.0
+offset_right = 67.0
+offset_bottom = -361.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 1, 0.3, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 64
+text = "+5s"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_bonus")

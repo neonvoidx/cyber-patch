@@ -8,10 +8,11 @@ var current_state: State = State.IDLE_DOWN
 var last_direction: Vector2 = Vector2.DOWN
 
 func _physics_process(_delta: float) -> void:
-	handle_input()
-	update_state()
-	#update_animations()
-	move_and_slide()
+	if GameState.is_player_movable:
+		handle_input()
+		update_state()
+		#update_animations()
+		move_and_slide()
 	
 func handle_input() -> void:
 	var input_direction = Vector2.ZERO
@@ -69,5 +70,5 @@ func update_state():
 		#State.RIGHT: animations.play("walk_right")
 
 
-func _on_area_2d_body_entered(_body: Node2D) -> void:
-	GameState.leave_underground()
+func _on_terminal_body_entered(_body: Node2D) -> void:
+	pass # Replace with function body.

@@ -1,0 +1,130 @@
+[gd_scene load_steps=6 format=3 uid="uid://vxv4jc7rjv0w"]
+
+[ext_resource type="Script" uid="uid://dgrs3aa5ip5bq" path="res://scripts/puzzles/quick_input.gd" id="1_vv0sm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button1"]
+bg_color = Color(0.2, 0.2, 0.3, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.36078432, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button2"]
+bg_color = Color(0.2, 0.2, 0.3, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.36078432, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button3"]
+bg_color = Color(0.2, 0.2, 0.3, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.36078432, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button4"]
+bg_color = Color(0.2, 0.2, 0.3, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.36078432, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="QuickInputPuzzle" type="CanvasLayer"]
+script = ExtResource("1_vv0sm")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16450001, 0.17977491, 0.47, 0.4862745)
+
+[node name="QuickInput" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="QuickInput"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="QuickInput/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="QuickInput/CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_button1")
+
+[node name="Label" type="Label" parent="QuickInput/CenterContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.36078432, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "W"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="QuickInput/CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_button2")
+
+[node name="Label2" type="Label" parent="QuickInput/CenterContainer/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.36078432, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "S"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="QuickInput/CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_button3")
+
+[node name="Label3" type="Label" parent="QuickInput/CenterContainer/HBoxContainer/PanelContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.36078432, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer4" type="PanelContainer" parent="QuickInput/CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_button4")
+
+[node name="Label4" type="Label" parent="QuickInput/CenterContainer/HBoxContainer/PanelContainer4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.36078432, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "D"
+horizontal_alignment = 1
+vertical_alignment = 1

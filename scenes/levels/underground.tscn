@@ -1,6 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://csech3sd4urms"]
+[gd_scene load_steps=7 format=3 uid="uid://csech3sd4urms"]
 
 [ext_resource type="PackedScene" uid="uid://bear5257piwox" path="res://scenes/player/player_underground.tscn" id="1_g2nqr"]
+[ext_resource type="Script" uid="uid://2grp8cdm5ai" path="res://scripts/levels/underground.gd" id="1_if5af"]
+[ext_resource type="PackedScene" uid="uid://w58idcj6s0pu" path="res://scenes/puzzles/terminal.tscn" id="2_m80fq"]
+[ext_resource type="PackedScene" uid="uid://vxv4jc7rjv0w" path="res://scenes/puzzles/quick_input.tscn" id="3_x8616"]
+[ext_resource type="PackedScene" uid="uid://cfwnmbe7ktjbd" path="res://scenes/ui/ui.tscn" id="5_70qwx"]
 
 [sub_resource type="Gradient" id="Gradient_ukbxt"]
 colors = PackedColorArray(0.12941177, 0.13725491, 0.21568628, 1, 0.19607843, 0.20392157, 0.28627452, 1)
@@ -8,10 +12,11 @@ colors = PackedColorArray(0.12941177, 0.13725491, 0.21568628, 1, 0.19607843, 0.2
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_g2nqr"]
 gradient = SubResource("Gradient_ukbxt")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2nqr"]
-size = Vector2(16.136154, 27)
-
 [node name="Underground" type="Node2D"]
+script = ExtResource("1_if5af")
+
+[node name="Ui" parent="." instance=ExtResource("5_70qwx")]
+follow_viewport_enabled = false
 
 [node name="PlayerUndergound" parent="." instance=ExtResource("1_g2nqr")]
 motion_mode = 1
@@ -33,25 +38,9 @@ grow_vertical = 2
 scale = Vector2(76.4, 14.908708)
 texture = SubResource("GradientTexture2D_g2nqr")
 
-[node name="Node" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 377.0
-offset_top = 249.0
-offset_right = 377.0
-offset_bottom = 249.0
+[node name="Terminal" parent="." instance=ExtResource("2_m80fq")]
+position = Vector2(492, 354)
 
-[node name="Area2D" type="Area2D" parent="Node"]
+[node name="QuickInputPuzzle" parent="." instance=ExtResource("3_x8616")]
 
-[node name="ColorRect" type="ColorRect" parent="Node/Area2D"]
-offset_left = -19.0
-offset_top = -18.0
-offset_right = 21.0
-offset_bottom = 22.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Area2D"]
-position = Vector2(1.5, 2)
-scale = Vector2(2.5408762, 1.4502519)
-shape = SubResource("RectangleShape2D_g2nqr")
-
-[connection signal="body_entered" from="Node/Area2D" to="PlayerUndergound" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Terminal" to="PlayerUndergound" method="_on_terminal_body_entered"]
