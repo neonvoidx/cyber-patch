@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2rqh0tnt758m"]
+
+[ext_resource type="PackedScene" uid="uid://de6xpxle2jj4u" path="res://scenes/levels/ldtk/level_design.ldtk" id="1_5xyvs"]
+[ext_resource type="PackedScene" uid="uid://buhr1k8tqsglo" path="res://scenes/player/player_platforming.tscn" id="2_mnob0"]
+
+[node name="level_design" instance=ExtResource("1_5xyvs")]
+
+[node name="Player" parent="Level_0" index="5" instance=ExtResource("2_mnob0")]
+position = Vector2(408, 496)
