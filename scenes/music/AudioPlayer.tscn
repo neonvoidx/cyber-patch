@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvbp8m4y5cl35"]
+
+[ext_resource type="AudioStream" uid="uid://dxqui4i5sl6q" path="res://assets/music/sci-fi-space-cyberpunk-music-230626.mp3" id="1_v4uuu"]
+[ext_resource type="AudioStream" uid="uid://c7innuaei1rf" path="res://assets/music/password-infinity-123276.mp3" id="2_vn6ma"]
+[ext_resource type="AudioStream" uid="uid://ghcfg8ual8aa" path="res://assets/music/nostalgic-cyberpunk-music-230625.mp3" id="3_dp7kb"]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_v53qo"]
+shuffle = true
+stream_count = 3
+stream_0 = ExtResource("1_v4uuu")
+stream_1 = ExtResource("2_vn6ma")
+stream_2 = ExtResource("3_dp7kb")
+
+[node name="Playlist" type="AudioStreamPlayer"]
+stream = SubResource("AudioStreamPlaylist_v53qo")
+volume_db = -10.0
+autoplay = true

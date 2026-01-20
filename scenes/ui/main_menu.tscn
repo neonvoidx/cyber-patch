@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8tonftuprpeh"]
+[gd_scene load_steps=5 format=3 uid="uid://c8tonftuprpeh"]
 
 [ext_resource type="Script" uid="uid://bvp4m58kcm22e" path="res://scripts/ui/main_menu.gd" id="1_1g8jr"]
 [ext_resource type="FontFile" uid="uid://db0hbxgtfo0g0" path="res://assets/fonts/hypik.otf" id="1_fe2o3"]
 [ext_resource type="FontFile" uid="uid://b0cnq3g1ieha2" path="res://assets/fonts/Nasalization Rg.otf" id="3_1g8jr"]
+[ext_resource type="FontFile" uid="uid://brexys8gnu6v3" path="res://assets/fonts/FutureMillennium.ttf" id="3_m1kxf"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_1g8jr")
@@ -22,7 +23,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HFlowContainer" type="HFlowContainer" parent="CenterContainer"]
+[node name="HFlowContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 
 [node name="Title" type="Label" parent="CenterContainer/HFlowContainer"]
@@ -31,6 +32,13 @@ theme_override_colors/font_color = Color(0.21568628, 0.95686275, 0.6, 1)
 theme_override_fonts/font = ExtResource("1_fe2o3")
 theme_override_font_sizes/font_size = 72
 text = "CyberPatch"
+
+[node name="Title2" type="Label" parent="CenterContainer/HFlowContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.21568628, 0.95686275, 0.6, 1)
+theme_override_fonts/font = ExtResource("3_m1kxf")
+theme_override_font_sizes/font_size = 72
+text = "You won! Play again?"
 
 [node name="PressAny" type="RichTextLabel" parent="CenterContainer/HFlowContainer"]
 custom_minimum_size = Vector2(0, 140)

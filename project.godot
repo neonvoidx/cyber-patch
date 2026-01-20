@@ -21,6 +21,7 @@ config/icon="res://assets/icon.svg"
 
 GameState="*res://scripts/autoload/game_state.gd"
 Colors="*res://scripts/autoload/colors.gd"
+AudioPlayer="*res://scenes/music/AudioPlayer.tscn"
 
 [display]
 

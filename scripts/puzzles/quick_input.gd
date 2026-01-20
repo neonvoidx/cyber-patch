@@ -7,7 +7,7 @@ extends CanvasLayer
 	$QuickInput/CenterContainer/HBoxContainer/PanelContainer4/Label4
 ]
 
-const INPUTS = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+const INPUTS = ["W", "A", "S", "D"]
 const SEQUENCE_LENGTH = 4
 const INPUT_DELAY = 0.5
 

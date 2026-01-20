@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://clk6xds2kprkd"]
+
+[ext_resource type="Script" uid="uid://2grp8cdm5ai" path="res://scripts/levels/underground.gd" id="1_lmeig"]
+[ext_resource type="PackedScene" uid="uid://cfwnmbe7ktjbd" path="res://scenes/ui/ui.tscn" id="2_wsgvl"]
+[ext_resource type="PackedScene" uid="uid://bear5257piwox" path="res://scenes/player/player_underground.tscn" id="3_tx5am"]
+[ext_resource type="PackedScene" uid="uid://w58idcj6s0pu" path="res://scenes/puzzles/terminal.tscn" id="4_xj6sd"]
+[ext_resource type="PackedScene" uid="uid://vxv4jc7rjv0w" path="res://scenes/puzzles/quick_input.tscn" id="5_lb56t"]
+
+[sub_resource type="Gradient" id="Gradient_ukbxt"]
+colors = PackedColorArray(0.12941177, 0.13725491, 0.21568628, 1, 0.19607843, 0.20392157, 0.28627452, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g2nqr"]
+gradient = SubResource("Gradient_ukbxt")
+
+[node name="Underground" type="Node2D"]
+script = ExtResource("1_lmeig")
+
+[node name="Ui" parent="." instance=ExtResource("2_wsgvl")]
+follow_viewport_enabled = false
+
+[node name="PlayerUndergound" parent="." instance=ExtResource("3_tx5am")]
+motion_mode = 1
+floor_stop_on_slope = true
+
+[node name="BgLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="BG" type="TextureRect" parent="BgLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 1.0
+offset_right = 6.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(76.4, 14.908708)
+texture = SubResource("GradientTexture2D_g2nqr")
+
+[node name="Terminal" parent="." instance=ExtResource("4_xj6sd")]
+position = Vector2(306, 172)
+scale = Vector2(1.7285553, 2.007352)
+
+[node name="QuickInputPuzzle" parent="." instance=ExtResource("5_lb56t")]
+
+[connection signal="body_entered" from="Terminal" to="PlayerUndergound" method="_on_terminal_body_entered"]

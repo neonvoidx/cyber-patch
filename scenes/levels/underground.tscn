@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://csech3sd4urms"]
+[gd_scene load_steps=8 format=3 uid="uid://csech3sd4urms"]
 
 [ext_resource type="PackedScene" uid="uid://bear5257piwox" path="res://scenes/player/player_underground.tscn" id="1_g2nqr"]
 [ext_resource type="Script" uid="uid://2grp8cdm5ai" path="res://scripts/levels/underground.gd" id="1_if5af"]
@@ -39,7 +39,8 @@ scale = Vector2(76.4, 14.908708)
 texture = SubResource("GradientTexture2D_g2nqr")
 
 [node name="Terminal" parent="." instance=ExtResource("2_m80fq")]
-position = Vector2(492, 354)
+position = Vector2(306, 172)
+scale = Vector2(1.7285553, 2.007352)
 
 [node name="QuickInputPuzzle" parent="." instance=ExtResource("3_x8616")]
 

@@ -1,8 +1,10 @@
 extends Node
 # Game State
+const MAX_LEVEL = 2
 var is_game_over: bool
 var max_timer_value = 20.0
 var initial_time = 20.0
+var is_won = false
 var level = 1
 var level_complete = false
 var is_paused = false
@@ -12,6 +14,8 @@ var is_puzzle_showing = false
 var is_player_movable = true
 var show_time_bonus = false
 var time_bonus_amount = 0.0
+var level_map = {1: "res://scenes/levels/city1.tscn", 2: "res://scenes/levels/city2.tscn"}
+var undeground_map = {1: "res://scenes/levels/underground.tscn", 2: "res://scenes/levels/underground2.tscn"}
 
 # Saved state for underground transitions
 var saved_city_position: Vector2 = Vector2.ZERO
@@ -28,10 +32,9 @@ func unfreeze_player():
 	is_player_movable=true
 	
 func complete_level() -> void:
-	level_complete = true
 	level += 1
-	is_puzzle_complete = false
-	pause()
+	change_map()
+	reset_level()
 
 func enter_undergound(player_position: Vector2 = Vector2.ZERO, time_left: float = 0.0) -> void:
 	is_underground=true
@@ -49,7 +52,7 @@ func leave_underground():
 	show_time_bonus = true
 	time_bonus_amount = bonus
 	time_bonus_added.emit(bonus)
-	get_tree().change_scene_to_file("res://scenes/levels/city.tscn")
+	get_tree().change_scene_to_file(level_map[level])
 	
 func pause() -> void:
 	is_paused = true
@@ -71,10 +74,16 @@ func reset_level():
 	is_player_movable = true
 	is_game_over = false
 	is_underground =false
-	# TODO this should be based on current level
-	# but we only have one right now anyways
-	get_tree().change_scene_to_file("res://scenes/levels/city.tscn")
+	level_complete=false
 		
+
+func change_map():
+	if level > MAX_LEVEL:
+		is_won=true
+		level = 1
+		get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")	
+	else:
+		get_tree().change_scene_to_file(level_map[level])
 	
 # Signals emitted
 signal game_over
